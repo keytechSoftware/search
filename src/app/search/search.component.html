@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="table-responsive">
+    <div class="col-md-12">
+
+      <form class="form-inline">
+        <div class="input-group ">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+          <input id="query-string" [(ngModel)]="queryString" type="text" class="form-control" 
+                name="query-string" placeholder="Bitte Suchbegriff eingeben">
+        </div>
+        <button type="submit" (click)="doSearch()" class="btn btn-success">Suchen</button><br>
+        Bsp.: <a style="cursor: pointer;" (click)="queryString='Spreizer';">Spreizer</a> oder 
+              <a style="cursor: pointer;" (click)="queryString='Hydraulic';">Hydraulic</a> 
+      </form>
+
+      <br>
+
+      <div *ngIf="recordsFound" class="table-responsive">
+            <kt-search-result
+              (redoSearch) = "redoSearch($event)"
+              (downloadMasterFile) = "onDownloadMasterFile($event)"
+              [queryString] = "queryString"
+              [queryResult] = "queryResult"
+              [recordsFound] = "recordsFound"
+              [pageSize] = "pageSize"
+              [pageNumber] = "pageNumber"
+              [maxPageNumber] = "maxPageNumber">
+            </kt-search-result>
+      </div>
+
+    </div>
+  </div>
+</div>

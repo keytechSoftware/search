@@ -1,0 +1,45 @@
+
+<h4  *ngIf="queryName">Abfrage: {{queryName}}</h4>
+
+<div class="well well-sm" *ngIf="recordsFound" >
+  <p class="text-left">{{recordsFound}} Datensätze gefunden (Seite: {{pageNumber}} von {{maxPageNumber}})
+    <span *ngIf="pageNumber > 1"><a (click)="back()" style="cursor: pointer; margin-left: 20px">Zurück</a></span>
+    <span *ngIf="maxPageNumber > pageNumber"><a (click)="forward()" style="cursor: pointer; margin-left: 20px">Weiter</a></span>
+    
+    <span style="float:right;">Seitengröße: {{pageSize}}</span>
+  </p>
+
+    <div  class="input-group">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-filter" ></i></span>
+      <input id="tableFilterString" type="text" class="form-control" onkeyup="filterTable('queryResultTable',1)" placeholder="Beschreibung filtern...">
+    </div>
+</div>
+    
+<div class="table-responsive">
+
+  <table *ngIf="recordsFound" class="table table-hover" id ="queryResultTable"> 
+    <thead>
+      <tr>
+        <th class="text-muted">Vorschau</th>
+        <th class="col-md-12 text-muted">Beschreibung</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let data of (queryResult | keys2)">
+        <td *ngFor="let key of (data.value | keys2 )" class="text-center" >
+            <img class="img img-thumbnail" src="{{key.value.Key | thumbnail | async }}"><br>
+            <a (click)="onDownloadMasterFile(key)" style="cursor: pointer;">{{key.value.Key | masterfileName | async | uppercase }}</a>
+        </td>
+        <td *ngFor="let key of (data.value | keys2 )">
+            <a [routerLink]="['/element-info']" [queryParams]="{elementKey: key.value.Key }"><b> {{key.value | displayname}}</b> </a>
+            <br>          
+            Status: <b>{{key.value | status}}</b><br>
+            Erstellt: <b>{{key.value.CreatedByLong}} / {{key.value.CreatedAt | epoch2date }}</b><br>
+            Bearbeitet: <b>{{key.value.ChangedByLong}} / {{key.value.ChangedAt | epoch2date }}</b>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

@@ -1,0 +1,167 @@
+<button type="button" onClick="window.history.back();" class="glyphicon glyphicon-chevron-left btn btn-default btn-sm "></button>
+
+<div class="container">
+
+    <div *ngIf="element">
+      <h4>Klasse: {{element.ClassDisplayName}}</h4>
+      <h3 *ngIf="!elementKey.includes('MAIL_WF') && !elementKey.includes('TASK_WF')">{{element.DisplayName}}</h3>
+      <h3 *ngIf="elementKey.includes('MAIL_WF') || elementKey.includes('TASK_WF')">{{element.Subject}}</h3>
+    </div>
+
+      <div class="col-md-3">
+        <div class="text-center">
+          <br>
+          <img class="img img-responsive" [src] = preview>
+          <button *ngIf="!elementKey.includes('_MI') && !elementKey.includes('_WF')"
+                type="submit" (click)="onDownloadMasterFile(element.Key)" class="btn btn-link">
+                <span class="glyphicon glyphicon-download"></span> {{masterFileNameExtension | uppercase}} herunterladen</button>
+        </div>
+        
+    </div>
+
+  <br>
+  
+  <div class="col-md-9">
+    
+    <div *ngIf="element">
+        
+        <!-- Documents, Items, Folders -->
+        <div *ngIf="!elementKey.includes('MAIL_WF') && !elementKey.includes('TASK_WF')">
+            <table  class="table table-condensed table-hover"> 
+                <tbody>
+                    <tr>
+                        <td>Name</td>
+                        <td>{{element.Name}}</td>
+                    </tr>
+                    <tr>
+                        <td>Version</td>
+                        <td>{{element.Version}}</td>            
+                    </tr>
+                    <tr>
+                        <td>Status</td>
+                        <td>{{element.Status}}</td>
+                    </tr>
+                    <tr>
+                        <td>Beschreibung</td>
+                        <td>{{element.Description}}</td>            
+                    </tr>
+                    <tr>
+                        <td>Erstellt von</td>
+                        <td>{{element.CreatedByLong}}</td>            
+                    </tr>
+                    <tr>
+                        <td>Erstellt am</td>
+                        <td>{{element.CreatedAt | epoch2date}}</td>            
+                    </tr>
+                    <tr>
+                        <td>Zuletzt geändert von</td>
+                        <td>{{element.ChangedByLong}}</td>            
+                    </tr>
+                    <tr>
+                        <td>Zuletzt geändert am</td>
+                        <td>{{element.ChangedAt | epoch2date}}</td>            
+                    </tr>
+                    <tr>
+                        <td>Freigegeben von</td>
+                        <td>{{element.ReleasedByLong}}</td>            
+                    </tr>
+                    <tr>
+                        <td>Freigegeben am</td>
+                        <td>{{element.ReleasedAt | epoch2date}}</td>            
+                    </tr>      
+                </tbody>     
+            </table>            
+        </div>                    
+
+        <!-- Tasks -->
+        <div *ngIf="elementKey.includes('TASK_WF')">
+            <table  class="table table-condensed table-hover"> 
+                <tbody>
+                    <tr>
+                        <td>Betreff</td>
+                        <td>{{element.Subject}}</td>
+                    </tr>
+                    <tr>
+                        <td>Status</td>
+                        <td>{{element.TaskStatusDisplayText}}</td>
+                    </tr>
+                    <tr>
+                        <td>Fortschritt</td>
+                        <td>{{element.CompletedPercent}}%</td>
+                    </tr>                                 
+                    <tr>
+                        <td>Besitzer</td>
+                        <td>{{element.OwnerLong}}</td>
+                    </tr>
+                    <tr>
+                        <td>Geplanter Start</td>
+                        <td>{{element.PlannedStart | epoch2date}}</td>
+                    </tr>
+                    <tr>
+                        <td>Geplantes Ende</td>
+                        <td>{{element.PlannedEnd | epoch2date}}</td>
+                    </tr>
+                    <tr>
+                        <td>Erstellt von</td>
+                        <td>{{element.CreatedByLong}}</td>            
+                    </tr>
+                    <tr>
+                        <td>Erstellt am</td>
+                        <td>{{element.CreatedAt | epoch2date}}</td>            
+                    </tr>                    
+
+                    <tr>
+                        <td>Priorität</td>
+                        <td>{{element.PriorityDisplayText}}</td>
+                    </tr>
+                    <!-- <tr>
+                        <td>Kategorie</td>
+                        <td>{{element.CategoryDisplayText}}</td>
+                    </tr> -->
+                    <tr>
+                        <td>Text (Vorschau)</td>
+                        <td>{{element.Description}}</td>
+                    </tr>  
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Messages -->
+        <div *ngIf="elementKey.includes('MAIL_WF')">
+            <table  class="table table-condensed table-hover"> 
+                <tbody>
+                    <tr>
+                        <td>Betreff</td>
+                        <td>{{element.Subject}}</td>
+                    </tr>
+                    <tr>
+                        <td>Priorität</td>
+                        <td>{{element.PriorityDisplayText}}</td>
+                    </tr>
+                    <tr>
+                        <td>Absender</td>
+                        <td>{{element.Sender}}</td>
+                    </tr>     
+                    <tr>
+                        <td>Empfänger</td>
+                        <td>{{element.Recipient}}</td>
+                    </tr>
+                    <tr>
+                        <td>Gesendet</td>
+                        <td>{{element.TransportDate | epoch2date}}</td>
+                    </tr>
+                    <tr>
+                        <td>Text (Vorschau)</td>
+                        <td>{{element.Description}}</td>
+                    </tr>                                                                        
+                </tbody>
+            </table>
+        </div>
+  
+        
+      
+    </div>
+
+  </div>
+  
+</div>

@@ -18,7 +18,7 @@ export class SearchComponent implements OnInit {
       private httpService: HttpService,
       private alertService: AlertService) { }
 
-  queryString;
+  queryString: string;
   queryResult;
 
   recordsFound: number;
@@ -40,11 +40,6 @@ export class SearchComponent implements OnInit {
     this.getSearchResult(this.queryString);
   }
 
-  doSearch() {
-    this.alertService.info("Suche wird ausgeführt...")
-    this.getSearchResult(this.queryString);
-  }
-
   // ------------------------------------------------------------------
   // Downloads the master file
   // ------------------------------------------------------------------  
@@ -63,6 +58,8 @@ export class SearchComponent implements OnInit {
   // Performs a search
   // ------------------------------------------------------------------
   async getSearchResult(querystring: string) {
+
+    this.alertService.info("Suche wird ausgeführt...")
 
     if (querystring != Tools.getStorageValue('lastQuery'))
       this.pageNumber = 1;

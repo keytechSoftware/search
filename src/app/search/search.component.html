@@ -8,7 +8,7 @@
           <input id="query-string" [(ngModel)]="queryString" type="text" class="form-control" 
                 name="query-string" placeholder="Bitte Suchbegriff eingeben">
         </div>
-        <button type="submit" (click)="doSearch()" class="btn btn-success">Suchen</button><br>
+        <button type="submit" (click)="getSearchResult(queryString)" class="btn btn-success">Suchen</button><br>
         Bsp.: <a style="cursor: pointer;" (click)="queryString='Spreizer';">Spreizer</a> oder 
               <a style="cursor: pointer;" (click)="queryString='Hydraulic';">Hydraulic</a> 
       </form>

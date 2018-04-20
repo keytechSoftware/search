@@ -10,7 +10,7 @@ import { Server } from "../shared/server";
 import { Tools } from "../shared/tools";
 import { AlertService } from '../services/alert.service';
 import { MasterfileNamePipe } from '../pipes/masterfile-name.pipe';
-import { ElementList } from '../api/element-list';
+import { Element } from '../api/element';
 
 
 @Component({
@@ -22,7 +22,7 @@ export class ElementInfoComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
   elementKey: string;
 
-  element: ElementList;
+  element: Element;
   preview: string;
 
   constructor(private httpService: HttpService,

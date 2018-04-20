@@ -1,4 +1,4 @@
-export class ElementList {
+export class Element {
     constructor(
         public Key: string,
         public KeyValueList: any[],

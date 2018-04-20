@@ -1,11 +1,11 @@
-import { ElementList } from "./element-list";
+import { Element } from "./element";
 
     export class SearchResponse {
         constructor(
             public PageNumber: number,
             public Totalrecords: number,
             public PageSize: number,
-            public ElementList: ElementList[]
+            public ElementList: Element[]
         ){}
 
         public static ToElementListArray(response: SearchResponse){  

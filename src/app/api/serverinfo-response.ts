@@ -1,14 +1,23 @@
-// Represents the answer to a ServerInfo request
-
+/**
+ * Represents the answer to a ServerInfo request
+ * 
+ * @export
+ * @class ServerInfoResponse
+ */
 export class ServerInfoResponse {
     constructor (
         public ServerInfoResult: ServerInfoResult[]
     ){}
 
-        // ------------------------------------------------------------------
-        // Converts the ServerInfo object into a KeyValue array
-        // ------------------------------------------------------------------
-        public static ToKeyValueArray(response:ServerInfoResponse){  
+/**
+ * Converts the ServerInfo object into a KeyValue array
+ * 
+ * @static
+ * @param {ServerInfoResponse} response 
+ * @returns 
+ * @memberof ServerInfoResponse
+ */
+public static ToKeyValueArray(response:ServerInfoResponse){  
             let keyValueArray = [];
             let data = response.ServerInfoResult;
 
@@ -19,7 +28,6 @@ export class ServerInfoResponse {
             }
             return keyValueArray;
         }
-
 }
 
 export class ServerInfoResult {

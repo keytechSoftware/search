@@ -1,11 +1,15 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
+/**
+ * Gets the display name of the specified element
+ * 
+ * @export
+ * @class DisplaynamePipe
+ * @implements {PipeTransform}
+ */
 @Pipe({
   name: 'displayname'
 })
-// ------------------------------------------------------------------
-// Gets the display name of the specified element
-// ------------------------------------------------------------------ 
 export class DisplaynamePipe implements PipeTransform {
 
   transform(value: any, args?: any): any {

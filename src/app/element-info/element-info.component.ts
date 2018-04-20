@@ -43,18 +43,23 @@ export class ElementInfoComponent implements OnInit, OnDestroy {
 
   }
 
-  // ------------------------------------------------------------------
-  // Cancel subscription in order to avoid a possible memory leak
-  // ------------------------------------------------------------------
-  ngOnDestroy() {
+/**
+ * Cancel subscription in order to avoid a possible memory leak
+ * 
+ * @memberof ElementInfoComponent
+ */
+ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 
 
-  // ------------------------------------------------------------------
-  // Get the preview of the specified element
-  // ------------------------------------------------------------------
-  async getPreview(elementKey: string) {
+/**
+ * Get the preview of the specified element
+ * 
+ * @param {string} elementKey 
+ * @memberof ElementInfoComponent
+ */
+async getPreview(elementKey: string) {
 
     try {
       const response = await this.httpService
@@ -71,10 +76,13 @@ export class ElementInfoComponent implements OnInit, OnDestroy {
 
   masterFileNameExtension: string;
 
-  // ------------------------------------------------------------------
-  // Determines the data of a keytech element
-  // ------------------------------------------------------------------
-  async getElementInfo(elementKey: string) { 
+/**
+ * Determines the data of a keytech element
+ * 
+ * @param {string} elementKey 
+ * @memberof ElementInfoComponent
+ */
+async getElementInfo(elementKey: string) { 
 
     try {
       const response: ElementResponse = await this.httpService
@@ -91,10 +99,13 @@ export class ElementInfoComponent implements OnInit, OnDestroy {
 
   }
 
-  // ------------------------------------------------------------------
-  // Download the master file of a keytech document
-  // ------------------------------------------------------------------  
-  async onDownloadMasterFile(elementKey) {
+/**
+ * Download the master file of a keytech document
+ * 
+ * @param {any} elementKey 
+ * @memberof ElementInfoComponent
+ */
+async onDownloadMasterFile(elementKey: any) {
 
     try {
       await this.httpService.downloadMasterFile(Server.WebApiUrl, elementKey).toPromise();

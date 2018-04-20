@@ -4,12 +4,16 @@ import { HttpService } from "../services/http.service";
 import { Server } from "../shared/server";
 import { Tools } from "../shared/tools";
 
+/**
+ * Asynchronous pipe that returns the thumbnail of the specified element
+ * 
+ * @export
+ * @class ThumbnailPipe
+ * @implements {PipeTransform}
+ */
 @Pipe({
   name: 'thumbnail'
 })
-// ------------------------------------------------------------------
-// Asynchronous pipe that returns the thumbnail of the specified element
-// ------------------------------------------------------------------ 
 export class ThumbnailPipe implements PipeTransform {
   constructor(private httpService: HttpService) { }
   
@@ -18,10 +22,14 @@ export class ThumbnailPipe implements PipeTransform {
     return this.getThumbnail(elementKey);
   }
 
-  // ------------------------------------------------------------------
-  // Returns the thumbnail of the specified element
-  // ------------------------------------------------------------------
-  async getThumbnail(elementKey: string) {
+/**
+ * Returns the thumbnail of the specified element
+ * 
+ * @param {string} elementKey 
+ * @returns 
+ * @memberof ThumbnailPipe
+ */
+async getThumbnail(elementKey: string) {
 
   if (elementKey.length == 0) {
     return null;

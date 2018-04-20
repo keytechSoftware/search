@@ -40,10 +40,13 @@ export class SearchComponent implements OnInit {
     this.getSearchResult(this.queryString);
   }
 
-  // ------------------------------------------------------------------
-  // Downloads the master file
-  // ------------------------------------------------------------------  
-  async onDownloadMasterFile(elementInfo) {
+/**
+ * Downloads the master file
+ * 
+ * @param {any} elementInfo 
+ * @memberof SearchComponent
+ */
+async onDownloadMasterFile(elementInfo) {
     var elementKey = elementInfo.value.Key;
 
     try {
@@ -54,10 +57,13 @@ export class SearchComponent implements OnInit {
     }
   }
 
-  // ------------------------------------------------------------------
-  // Performs a search
-  // ------------------------------------------------------------------
-  async getSearchResult(querystring: string) {
+/**
+ * Performs a search
+ * 
+ * @param {string} querystring 
+ * @memberof SearchComponent
+ */
+async getSearchResult(querystring: string) {
 
     this.alertService.info("Suche wird ausgeführt...")
 

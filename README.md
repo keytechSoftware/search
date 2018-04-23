@@ -13,7 +13,7 @@ Since most of the keytech customers are German speaking, the user interface is d
 
 
 ## Getting Started
-The project was created with [Visual Studio Code](https://code.visualstudio.com/) and the [Angular CLI](https://github.com/angular/angular-cli) Version 1.0.0-rc.0.
+The project was created with [Visual Studio Code](https://code.visualstudio.com/) and the [Angular CLI](https://github.com/angular/angular-cli) Version 1.7.4.
 
 These instructions will get you a copy of the project up and running on your local machine for development purposes.
 
